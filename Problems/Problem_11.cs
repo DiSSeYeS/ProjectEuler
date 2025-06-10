@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,6 +11,9 @@ namespace Euler.Problems
     {
         public static void Solution()
         {
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+
             string matrix_string =
             "08 02 22 97 38 15 00 40 00 75 04 05 07 78 52 12 50 77 91 08" +
             " 49 49 99 40 17 81 18 57 60 87 17 40 98 43 69 48 04 56 62 00" +
@@ -34,20 +38,19 @@ namespace Euler.Problems
 
             List<int[]> matrix = new List<int[]>();
 
-
             int[] row = new int[20];
-            int count = 0;
+            int length = 0;
 
             for (int i = 1; i < matrix_string.Length; i += 3)
             {
-                row.SetValue(Int32.Parse((matrix_string[i - 1] + "" + matrix_string[i]).ToString()), count);
-                count++;
+                row.SetValue(Int32.Parse((matrix_string[i - 1] + "" + matrix_string[i]).ToString()), length);
+                length++;
 
-                if (count == 20)
+                if (length == 20)
                 {
                     matrix.Add(row);
                     row = new int[20];
-                    count = 0;
+                    length = 0;
                 }
             }
 
@@ -74,7 +77,6 @@ namespace Euler.Problems
                         {
                             maximum = matrix[i][j] * matrix[i][j + 1] * matrix[i][j + 2] * matrix[i][j + 3];
                         }
-
                     }
 
                     if (20 - i > 4)
@@ -103,7 +105,9 @@ namespace Euler.Problems
                 }
             }
 
-            Console.WriteLine($"Problem 11 answer: {maximum}");
+            stopwatch.Stop();
+
+            Console.WriteLine($"Problem 11 solved in {stopwatch.ElapsedMilliseconds} ms. Answer: {maximum}");
         }
     }
 }

@@ -2,31 +2,32 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Euler.Problems
 {
-    public class Problem_1
+    class Problem_29
     {
-        public static void Soultion()
+        public static void Solution()
         {
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
 
-            int sum = 0;
+            HashSet<BigInteger> set = [];
 
-            for (int i = 1; i < 1000; i++)
+            for (int i = 2; i <= 100; i++)
             {
-                if (i % 3 == 0 || i % 5 == 0)
+                for (int j = 2; j <= 100; j++)
                 {
-                    sum += i;
+                    set.Add((BigInteger)Math.Pow(i, j));
                 }
             }
 
             stopwatch.Stop();
 
-            Console.WriteLine($"Problem 1 solved in {stopwatch.ElapsedMilliseconds} ms. Answer: {sum}");
+            Console.WriteLine($"Problem 29 solved in {stopwatch.ElapsedMilliseconds} ms. Answer: {set.Count}");
         }
     }
 }

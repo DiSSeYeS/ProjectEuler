@@ -11,19 +11,22 @@ namespace Euler.Problems
     {
         public static void Solution()
         {
-            Dictionary<long, long> cache = new Dictionary<long, long>();
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+
+            Dictionary<long, long> cache = [];
             long result = 0;
 
             long collatzSequence(long num)
             {
                 long NUM = num;
-                long count = 1;
+                long length = 1;
                 while (num > 1)
                 {
 
                     if (cache.ContainsKey(num))
                     {
-                        count += cache[num];
+                        length += cache[num];
                         break;
                     }
                     else
@@ -31,11 +34,11 @@ namespace Euler.Problems
                         switch (num % 2 == 0)
                         {
                             case true:
-                                count++;
+                                length++;
                                 num = num / 2;
                                 break;
                             case false:
-                                count += 2;
+                                length += 2;
                                 num = (num * 3 + 1) / 2;
                                 break;
                         }
@@ -45,9 +48,9 @@ namespace Euler.Problems
 
                 if (!cache.ContainsKey(NUM))
                 {
-                    cache[NUM] = count;
+                    cache[NUM] = length;
                 }
-                return count;
+                return length;
             }
 
             for (int i = 1000000; i > 0; i--)
@@ -58,7 +61,9 @@ namespace Euler.Problems
                 }
             }
 
-            Console.WriteLine($"Problem 14 answer: {result}");
+            stopwatch.Stop();
+
+            Console.WriteLine($"Problem 14 solved in {stopwatch.ElapsedMilliseconds} ms. Answer: {result}");
         }
     }
 }

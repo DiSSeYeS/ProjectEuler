@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,6 +11,9 @@ namespace Euler.Problems
     {
         public static void Solution()
         {
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+
             List<int> primes = new List<int>() { 2 };
             int num = 3;
 
@@ -17,6 +21,7 @@ namespace Euler.Problems
             {
                 bool flag = true;
                 int div_num = 2;
+
                 while (div_num < Math.Sqrt(num)+1)
                 {
                     if (num % div_num == 0)
@@ -36,7 +41,7 @@ namespace Euler.Problems
                 num += 2;
             }
 
-            Console.WriteLine($"Problem 7 answer: {primes.Last()}");
+            Console.WriteLine($"Problem 7 solved in {stopwatch.ElapsedMilliseconds} ms. Answer: {primes.Last()}");
         }
     }
 }

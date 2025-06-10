@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,6 +11,9 @@ namespace Euler.Problems
     {
         public static void Solution()
         {
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+
             int sum = 2;
             List<int> fibbo = new List<int>() { 1, 2 };
 
@@ -34,7 +38,9 @@ namespace Euler.Problems
 
             }
 
-            Console.WriteLine($"Problem 2 answer: {sum}");
+            stopwatch.Stop();
+
+            Console.WriteLine($"Problem 2 solved in {stopwatch.ElapsedMilliseconds} ms. Answer: {sum}");
         }
     }
 }

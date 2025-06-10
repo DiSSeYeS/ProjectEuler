@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,6 +11,9 @@ namespace Euler.Problems
     {
         public static void Solution()
         {
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+
             int sum_square = 0, square_sum = 0;
 
             for (int i = 1; i <= 100; i++)
@@ -20,7 +24,7 @@ namespace Euler.Problems
 
             square_sum *= square_sum;
 
-            Console.WriteLine($"Problem 6 answer: {square_sum-sum_square}");
+            Console.WriteLine($"Problem 6 solved in {stopwatch.ElapsedMilliseconds} ms. Answer: {square_sum-sum_square}");
         }
     }
 }

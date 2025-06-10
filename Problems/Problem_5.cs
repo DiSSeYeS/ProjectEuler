@@ -11,6 +11,9 @@ namespace Euler.Problems
     {
         public static void Solution()
         {
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+
             bool flag = true;
 
             for (int i = 20 * 19 * 17; i <= 20000; i += 20)
@@ -32,7 +35,7 @@ namespace Euler.Problems
                     if (flag)
                     {
                         result = i * j;
-                        Console.WriteLine($"Problem 5 answer: {result}");
+                        Console.WriteLine($"Problem 5 solved in {stopwatch.ElapsedMilliseconds} ms. Answer: {result}");
                         break;
                     }
                 }

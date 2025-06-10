@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,9 +11,11 @@ namespace Euler.Problems
     {
         public static void Solution()
         {
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
 
             long totalSum = 0;
-            int count = 1;
+            int length = 1;
 
             for (int i = 1; i < 2000000; i++)
             {
@@ -24,29 +27,31 @@ namespace Euler.Problems
                 {
                     if (tempSum % div == 0)
                     {
-                        int tempCount = 1;
+                        int templength = 1;
 
                         do
                         {
-                            tempCount++;
+                            templength++;
                             tempSum /= div;
                         }
                         while (tempSum % div == 0);
 
-                        count *= tempCount;
+                        length *= templength;
                     }
 
                     div++;
                 }
                 while (tempSum != 1);
 
-                if (count > 500)
+                if (length > 500)
                 {
-                    Console.WriteLine($"Problem 12 answer: {totalSum}");
+                    stopwatch.Stop();
+
+                    Console.WriteLine($"Problem 12 solved in {stopwatch.ElapsedMilliseconds} ms. Answer: {totalSum}");
                     break;
                 }
 
-                count = 1;
+                length = 1;
             }
         }
     }

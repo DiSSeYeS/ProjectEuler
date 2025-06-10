@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,9 +11,12 @@ namespace Euler.Problems
     {
         public static void Solution()
         {
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+
             int result = 0;
 
-            bool isPalindrome(string word)
+            static bool isPalindrome(string word)
             {
                 for (int i = 0; i < word.Length / 2; i++)
                 {
@@ -38,7 +42,7 @@ namespace Euler.Problems
                 }
             }
 
-            Console.WriteLine($"Problem 4 answer: { result}");
+            Console.WriteLine($"Problem 4 solved in {stopwatch.ElapsedMilliseconds} ms. Answer: {result}");
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Numerics;
 using System.Text;
@@ -11,6 +12,9 @@ namespace Euler.Problems
     {
         public static void Solution()
         {
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+
             List<string> nums_string = new List<string>()
         {
             "37107287533902102798797998220837590246510135740250",
@@ -122,7 +126,9 @@ namespace Euler.Problems
                 sum += BigInteger.Parse(num);
             }
 
-            Console.WriteLine($"Problem 13 answer: {sum}");
+            stopwatch.Stop();
+
+            Console.WriteLine($"Problem 13 solved in {stopwatch.ElapsedMilliseconds} ms. Answer: {sum}");
         }
     }
 }

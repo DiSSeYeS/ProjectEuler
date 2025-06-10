@@ -11,6 +11,9 @@ namespace Euler.Problems
     {
         public static void Solution()
         {
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+
             long sum = 2;
 
             for (int i = 3; i < 2000000; i += 2)
@@ -32,7 +35,9 @@ namespace Euler.Problems
                 }
             }
 
-            Console.WriteLine($"Problem 10 answer: {sum}");
+            stopwatch.Stop();
+
+            Console.WriteLine($"Problem 10 solved in {stopwatch.ElapsedMilliseconds} ms. Answer: {sum}");
         }
     }
 }
